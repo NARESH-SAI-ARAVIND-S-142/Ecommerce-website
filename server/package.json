@@ -1,0 +1,29 @@
+{
+  "name": "nexmart-server",
+  "version": "1.0.0",
+  "description": "NexMart eCommerce Platform — Backend API",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "seed": "node seed/seed.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "api",
+    "express",
+    "mongodb"
+  ],
+  "author": "NexMart",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.95.1",
+    "cloudinary": "^1.41.3",
+    "multer": "^2.1.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemailer": "^8.0.7",
+    "pdfkit": "^0.18.0",
+    "stripe": "^22.1.1"
+  }
+}
