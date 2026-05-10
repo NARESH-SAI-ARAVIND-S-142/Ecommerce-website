@@ -1,5 +1,4 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/NARESH-SAI-ARAVIND-S-142/Ecommerce-website/main/client/public/icons.svg" alt="NexMart Logo" width="140" />
 
   # ⚡ NexMart : Intelligent E-Commerce Architecture
   
@@ -75,31 +74,7 @@ Rather than relying entirely on the frontend to dictate payment success, NexMart
 - **Route Suspense & Skeletons:** React `lazy()` loading paired with custom skeleton UI loaders to prevent layout shift during chunk fetching.
 - **Responsive Fluidity:** 100% mobile-responsive layouts tailored for every breakpoint.
 
----
 
-## 📈 Project Evolution (Phases 7, 8, & 9)
-
-NexMart was built progressively. While early phases established the core MERN architecture, **Phases 7, 8, and 9** were course-correction sprints designed to elevate the platform from a standard store to an ultra-pro, production-grade application.
-
-### Phase 7: Engagement Mechanics
-Focusing on customer retention and interactivity:
-- **Coupons Engine:** Implemented a `Coupon` model and Redux thunks to calculate percentage-based discounts dynamically at checkout.
-- **Wishlists:** Added persistent wishlist arrays to the `User` model, allowing customers to heart and save products for later.
-- **Verified Reviews:** Built an interactive `StarRating` system. The backend validates if a user has actually purchased the product before allowing them to leave a review.
-
-### Phase 8: Enterprise Infrastructure
-Focusing on secure, autonomous operations:
-- **Stripe Webhooks (`express.raw()`):** Shifted order fulfillment from the insecure frontend to a cryptographically secure backend listener.
-- **PDF Invoice Engine:** Engineered an in-memory PDF builder using `pdfkit` that fires autonomously on payment success.
-- **Cloudinary CDN Integration:** Built an `ImageUploadModal` using `multer` to stream admin product uploads directly to edge-optimized Cloudinary servers.
-
-### 🌟 Phase 9: The AI Shopping Assistant (Star Feature)
-The crown jewel of NexMart is the **Phase 9 Anthropic Claude Integration**. We bypassed traditional, clunky keyword search bars by embedding a highly intelligent, conversational AI widget into the bottom corner of the viewport.
-- **Natural Language to NoSQL:** The backend instructs Claude 3 Haiku to extract intent (e.g., *“budget laptops”*) and converts its JSON response into complex MongoDB `$text` and price-boundary `$gte`/`$lte` queries.
-- **Rich Media Chat:** The chat window doesn't just return plain text—it actively renders interactive, clickable product cards pulled live from the database inventory!
-- **Framer Motion Micro-interactions:** The chat widget bounds and snaps into view with satisfying, physics-based physics, giving the entire application a premium, polished feel.
-
----
 
 ## 🏛️ Deep-Dive Architecture
 
