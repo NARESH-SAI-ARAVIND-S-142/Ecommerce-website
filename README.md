@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="client/public/icons.svg" alt="NexMart Logo" width="140" />
+  <img src="https://raw.githubusercontent.com/NARESH-SAI-ARAVIND-S-142/Ecommerce-website/main/client/public/icons.svg" alt="NexMart Logo" width="140" />
 
   # ⚡ NexMart : Intelligent E-Commerce Architecture
   
