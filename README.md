@@ -1,155 +1,160 @@
-# 🛍️ NexMart E-Commerce Platform
+<div align="center">
+  <img src="client/public/icons.svg" alt="NexMart Logo" width="120" />
 
-![NexMart Banner](https://via.placeholder.com/1200x400/0f172a/00c9a7?text=NexMart+E-Commerce+Platform)
+  # NexMart AI-Powered Commerce
+  
+  **A Next-Generation, Production-Ready E-Commerce Platform engineered with the MERN Stack and Claude 3 AI.**
 
-> A premium, highly optimized, full-stack e-commerce application built with the MERN stack (MongoDB, Express, React, Node.js) and powered by Redux Toolkit, Tailwind CSS, and Stripe.
+  [![React](https://img.shields.io/badge/React-18.x-blue.svg?style=for-the-badge&logo=react)](https://reactjs.org/)
+  [![Node.js](https://img.shields.io/badge/Node.js-20.x-green.svg?style=for-the-badge&logo=nodedotjs)](https://nodejs.org/)
+  [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248.svg?style=for-the-badge&logo=mongodb)](https://www.mongodb.com/)
+  [![Stripe](https://img.shields.io/badge/Stripe-Payments-6772E5.svg?style=for-the-badge&logo=stripe)](https://stripe.com/)
+  [![Anthropic](https://img.shields.io/badge/Claude_3-AI_Assistant-D97757.svg?style=for-the-badge&logo=anthropic)](https://www.anthropic.com/)
+</div>
 
-NexMart is a production-ready e-commerce platform designed with a focus on **cinematic UI/UX**, **high performance**, and **secure transactions**. It features a modern dark-mode aesthetic with glass-morphic elements and buttery-smooth Framer Motion animations.
+<br />
 
-## ✨ Features
+> **NexMart** is not just another e-commerce clone. It is a highly scalable, full-stack platform built with enterprise-grade infrastructure. From cryptographically secure Stripe webhooks to dynamic PDF invoice generation and an embedded Claude 3 Shopping Assistant, NexMart represents the pinnacle of modern web development.
 
-### 🛒 Customer Experience
-*   **Premium UI/UX:** Futuristic dark mode, dynamic gradients, glassmorphism, and responsive micro-animations.
-*   **Intelligent Search:** Millisecond-optimized MongoDB text indexing with debounced frontend queries.
-*   **Infinite Scrolling:** High-performance catalog browsing utilizing the React Intersection Observer API.
-*   **Persistent Cart:** LocalStorage-synced Redux cart drawer that auto-updates across tabs and reloads.
-*   **Secure Checkout:** Multi-step Stripe Elements integration for encrypted payment processing.
-*   **Order Tracking:** Detailed, color-coded timelines for users to track their orders from processing to delivery.
-*   **User Profiles:** Self-service portal for customers to manage their details and secure passwords.
-*   **OAuth Integration:** Seamless 1-click Google Sign-In alongside standard JWT email authentication.
+---
 
-### 🛡️ Admin Dashboard
-*   **Distraction-Free Layout:** A dedicated admin interface with a secure side-navigation layout.
-*   **Live Analytics:** Aggregated real-time metrics for total revenue, active users, and order volume.
-*   **Inventory Management:** Intuitive CRUD tables to monitor stock, adjust pricing, and flag products.
-*   **Order Fulfillment:** Centralized hub to update tracking statuses (Processing, Packed, Shipped, Delivered) instantly.
-*   **Role Management:** Safeguarded UI to view all registered customers and provision new Admin accounts.
+## ✨ Enterprise-Grade Features
+
+### 🧠 Intelligent AI Shopping Assistant
+- **Claude 3 Haiku Integration:** A globally accessible, floating chat widget powered by Anthropic's Claude 3.
+- **Natural Language Parsing:** Converts human queries ("I need a cheap laptop") into structured JSON search parameters.
+- **Dynamic Catalog Querying:** Executes advanced `$text` and Regex queries against the MongoDB database based on AI parameters, rendering interactive product cards directly in the chat stream.
+- **Resilient Fallback Engine:** Gracefully falls back to a custom local keyword-extraction algorithm if API rate limits are hit or keys are missing.
+
+### 💳 Robust Payment & Fulfillment Infrastructure
+- **Stripe Elements & Intents:** PCI-compliant checkout flow utilizing Stripe Payment Intents.
+- **Cryptographic Webhooks:** Secure backend listener (`express.raw()`) that verifies Stripe signatures to prevent spoofing, autonomously updating order statuses to `Paid` upon asynchronous success.
+- **Automated PDF Generation:** Utilizes `pdfkit` to dynamically generate professional, branded invoices in-memory.
+- **Nodemailer Dispatch:** Automatically attaches the generated PDF buffer to an HTML-templated email and dispatches it to the customer via SMTP upon successful payment.
+
+### 🔐 Security & Architecture
+- **JWT & HTTP-Only Cookies:** Secure, stateless authentication flow protecting against CSRF and XSS attacks.
+- **Role-Based Access Control (RBAC):** Strict middleware segregation between `Customer` and `Administrator` routes.
+- **Rate Limiting:** IP-based request throttling (`express-rate-limit`) specifically hardened on authentication and AI endpoints to mitigate brute-force and DDoS vectors.
+- **Cloudinary CDN:** Direct integration with Cloudinary for scalable, optimized product image hosting and transformations.
+
+### 🎨 State-of-the-Art UX/UI
+- **Premium Glassmorphism:** A breathtaking UI engineered with Tailwind CSS, featuring backdrop blurs, subtle gradients, and custom scrollbars.
+- **Framer Motion:** High-performance, physics-based micro-animations for route transitions, modals, and interactive elements.
+- **Redux Toolkit:** Centralized, predictable state management with `createAsyncThunk` for optimized network request handling.
 
 ---
 
 ## 🛠️ Technology Stack
 
-### Frontend
-*   **Framework:** React 18 (Vite)
-*   **State Management:** Redux Toolkit (`@reduxjs/toolkit`) & React-Redux
-*   **Styling:** Tailwind CSS (Custom Color Tokens & Glassmorphism Utilities)
-*   **Animations:** Framer Motion
-*   **Routing:** React Router v6
-*   **Forms & Notifications:** React Hot Toast
-*   **Payments:** Stripe Elements (`@stripe/react-stripe-js`)
-
-### Backend
-*   **Runtime:** Node.js
-*   **Framework:** Express.js
-*   **Database:** MongoDB & Mongoose ORM
-*   **Authentication:** JSON Web Tokens (JWT) & Google OAuth
-*   **Payments:** Stripe Node.js SDK
-*   **Security:** Helmet, CORS, Express Rate Limit, Mongo Sanitize
+| Category | Technologies |
+| :--- | :--- |
+| **Frontend** | React 18, Vite, Tailwind CSS, Framer Motion, Redux Toolkit, React Router DOM |
+| **Backend** | Node.js, Express.js, Mongoose, JSON Web Tokens (JWT), Bcrypt.js |
+| **Database** | MongoDB (Atlas / Local) |
+| **Integrations** | Stripe API, Anthropic (Claude 3), Cloudinary, Nodemailer, PDFKit |
+| **Tooling** | ESLint, Prettier, Git, Postman |
 
 ---
 
 ## 🚀 Quick Start Guide
 
-Follow these steps to get your local development environment up and running.
+### Prerequisites
+Ensure you have the following installed on your local machine:
+- **Node.js** (v18.0.0 or higher)
+- **MongoDB** (Local instance or Atlas URI)
+- **Git**
 
-### 1. Prerequisites
-Ensure you have the following installed on your machine:
-*   [Node.js](https://nodejs.org/en/) (v16.0 or higher)
-*   [MongoDB](https://www.mongodb.com/) (Local instance or Atlas URI)
-*   [Git](https://git-scm.com/)
-
-### 2. Clone the Repository
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/ecommerce.git
-cd ecommerce
+git clone https://github.com/NARESH-SAI-ARAVIND-S-142/Ecommerce-website.git
+cd Ecommerce-website
 ```
 
-### 3. Install Dependencies
-You will need to install dependencies for both the frontend (`client`) and backend (`server`).
+### 2. Environment Configuration
+You need to set up environment variables for both the client and the server.
 
+**Server Environment (`server/.env`):**
+```env
+NODE_ENV=development
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_ultra_secure_jwt_secret
+CLIENT_URL=http://localhost:5173
+
+# Stripe Infrastructure
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+
+# Cloudinary CDN
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+
+# SMTP / Email
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+
+# AI Integration
+ANTHROPIC_API_KEY=sk-ant-api03-...
+```
+
+### 3. Install Dependencies & Seed Data
+Install dependencies for both the frontend and backend, then seed the database with initial dummy data.
 ```bash
-# Install root (concurrently) dependencies
-npm install
-
 # Install server dependencies
 cd server
 npm install
 
+# Seed the database (Warning: Clears existing data)
+npm run data:import
+
 # Install client dependencies
 cd ../client
 npm install
-cd ..
 ```
 
-### 4. Environment Variables
-Create a `.env` file in the root of the `server` directory and a `.env` file in the root of the `client` directory. Use the provided `.env.example` files as templates.
-
-**`server/.env`**
-```env
-PORT=5000
-NODE_ENV=development
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_super_secret_jwt_key
-JWT_EXPIRE=30d
-STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
-GOOGLE_CLIENT_ID=your_google_client_id
-```
-
-**`client/.env`**
-```env
-VITE_API_URL=http://localhost:5000/api
-VITE_STRIPE_PUBLIC_KEY=pk_test_your_stripe_publishable_key
-VITE_GOOGLE_CLIENT_ID=your_google_client_id
-```
-
-### 5. Seed the Database
-Populate your database with dummy users and products to test the platform immediately.
+### 4. Ignite the Engines
+Start the development servers concurrently.
 
 ```bash
-cd server
-npm run data:import
-```
-*(Note: To destroy all data, you can run `npm run data:destroy`)*
+# Terminal 1: Start the Backend (from /server)
+npm run dev
 
-### 6. Run the Application
-From the root directory of the project, run the concurrently script:
-
-```bash
+# Terminal 2: Start the Frontend (from /client)
 npm run dev
 ```
-
-*   **Frontend Development Server:** `http://localhost:5173`
-*   **Backend API Server:** `http://localhost:5000`
+The application will be accessible at `http://localhost:5173`.
 
 ---
 
-## 🏗️ Project Architecture
+## 🏗️ System Architecture
 
-```text
-ecommerce/
-├── client/                     # React Frontend
-│   ├── src/
-│   │   ├── components/         # Reusable UI components (Buttons, Inputs, Modals)
-│   │   ├── hooks/              # Custom React hooks (useAuth, useDebounce, etc.)
-│   │   ├── pages/              # Main route views (Home, Products, Admin pages)
-│   │   ├── redux/              # Global state slices (cart, auth, order, product, admin)
-│   │   └── utils/              # Axios API configurations
-│   ├── index.css               # Tailwind directives & Custom glassmorphism classes
-│   └── vite.config.js          # Vite bundler configuration
-│
-└── server/                     # Express Backend
-    ├── controllers/            # Route logic (Auth, Product, Order, User)
-    ├── middleware/             # Error handlers, JWT verification, Rate limiters
-    ├── models/                 # Mongoose schemas (User, Product, Order)
-    ├── routes/                 # Express API routers
-    └── server.js               # Main Express application entry point
-```
+### Webhook Flow (Payment & Fulfillment)
+1. User confirms payment on the Frontend via Stripe Elements.
+2. Stripe processes the payment and asynchronously fires a `payment_intent.succeeded` event to `/api/webhooks/stripe`.
+3. Backend verifies the signature using `STRIPE_WEBHOOK_SECRET`.
+4. Backend updates the `Order` document status to `Paid`.
+5. Backend invokes `pdfkit` to construct a raw PDF buffer.
+6. Backend invokes `nodemailer` to send the PDF via email.
+
+### AI Search Pipeline
+1. User types query in the Frontend Chat Widget.
+2. Backend receives query at `/api/ai/chat`.
+3. Backend constructs a highly specific System Prompt and sends it alongside the user query to the Claude 3 API.
+4. Claude extracts intent and returns a structured JSON payload (e.g., `{"keyword": "sneakers", "maxPrice": 5000}`).
+5. Backend parses the JSON, constructs a Mongoose `$text` and `$lte` query, and fetches matching products.
+6. Results are returned to the frontend and rendered as interactive UI cards within the chat.
 
 ---
 
-## 📜 License
+## 🛡️ License
+This project is licensed under the **MIT License**. See the `LICENSE` file for more details.
 
-This project is licensed under the [MIT License](LICENSE).
+<br />
 
----
-*Built with ❤️ by the NexMart Team.*
+<div align="center">
+  <i>Engineered with precision for the modern web.</i>
+</div>
