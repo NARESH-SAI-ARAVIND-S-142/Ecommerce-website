@@ -1,7 +1,6 @@
 import Order from '../models/Order.js';
 import Product from '../models/Product.js';
 import generateInvoicePDF from '../utils/invoice.js';
-import generateInvoicePDF from '../utils/invoice.js';
 import { AppError, asyncHandler } from '../middleware/errorHandler.js';
 import Stripe from 'stripe';
 import dotenv from 'dotenv';

@@ -4,7 +4,10 @@ import User from '../models/User.js';
 import generateInvoicePDF from '../utils/invoice.js';
 import { sendOrderConfirmationEmail } from '../utils/sendEmail.js';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+import dotenv from 'dotenv';
+dotenv.config();
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock');
 
 /**
  * @desc    Handle Stripe Webhooks

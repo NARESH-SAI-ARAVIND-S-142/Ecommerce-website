@@ -2,7 +2,7 @@
 
   # ⚡ NexMart : Intelligent E-Commerce Architecture
   
-  **A monolithic, enterprise-grade e-commerce application powered by the MERN Stack, Next-Gen UI/UX design patterns, Stripe Webhooks, and Anthropic's Claude 3 AI.**
+  **A monolithic, enterprise-grade e-commerce application powered by the MERN Stack, Next-Gen UI/UX design patterns, Stripe Webhooks, and Groq's Llama 3 AI.**
 
   [![React](https://img.shields.io/badge/React-18.x-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
   [![Redux Toolkit](https://img.shields.io/badge/Redux-Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white)](https://redux.js.org/)
@@ -11,7 +11,7 @@
   [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
   [![Stripe](https://img.shields.io/badge/Stripe-Payments-008CDD?style=for-the-badge&logo=stripe&logoColor=white)](https://stripe.com/)
-  [![Anthropic](https://img.shields.io/badge/Claude_3-AI_Assistant-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://www.anthropic.com/)
+  [![Groq](https://img.shields.io/badge/Groq_Llama_3-AI_Assistant-F55036?style=for-the-badge)](https://groq.com/)
 
   *Engineered for scale, security, and seamless user experiences.*
 </div>
@@ -35,17 +35,17 @@
 
 **NexMart** is not just an online store; it is a demonstration of modern, full-stack architectural mastery. It diverges from standard e-commerce tutorials by implementing real-world, production-ready systems. 
 
-Rather than relying entirely on the frontend to dictate payment success, NexMart employs **cryptographically verified Stripe Webhooks** for secure backend order fulfillment. Rather than simple keyword searches, it embeds an **Anthropic Claude 3 AI Assistant** that understands complex natural language and programmatically queries the database. From automated PDF invoice generation to Cloudinary CDN image pipelines, every micro-interaction has been engineered to mimic the robust standards of industry-leading tech companies.
+Rather than relying entirely on the frontend to dictate payment success, NexMart employs **cryptographically verified Stripe Webhooks** for secure backend order fulfillment. Rather than simple keyword searches, it embeds a **Groq Llama 3 AI Assistant** that understands complex natural language and programmatically queries the database. From automated PDF invoice generation to Cloudinary CDN image pipelines, every micro-interaction has been engineered to mimic the robust standards of industry-leading tech companies.
 
 ---
 
 ## ✨ Pin-to-Pin Feature Breakdown
 
-### 🤖 1. The Claude 3 AI Shopping Assistant
+### 🤖 1. The Llama 3 AI Shopping Assistant
 - **Floating Chat Interface:** A globally persistent chat widget utilizing `framer-motion` for fluid opening, closing, and typing indicator micro-animations.
-- **Intent Parsing:** Uses Anthropic's `claude-3-haiku` model with a rigorously defined System Prompt to extract user intent. 
-- **JSON Parameter Extraction:** When a user asks "Show me laptops under ₹50,000", Claude replies with a structured `<search_params>` JSON block.
-- **Automated Database Interfacing:** The Express backend parses Claude's JSON, constructs a MongoDB query using `$text` indexing, regex matching, and `$lte`/`$gte` price filtering, and returns populated product cards directly into the chat UI.
+- **Intent Parsing:** Uses Groq's `llama3-70b-8192` model with a rigorously defined System Prompt to extract user intent. 
+- **JSON Parameter Extraction:** When a user asks "Show me laptops under ₹50,000", Llama 3 replies with a structured `<search_params>` JSON block.
+- **Automated Database Interfacing:** The Express backend parses Llama 3's JSON, constructs a MongoDB query using `$text` indexing, regex matching, and `$lte`/`$gte` price filtering, and returns populated product cards directly into the chat UI.
 - **Fallback Engine:** If API rate limits are hit, it automatically reverts to a custom local keyword-matching algorithm, ensuring 100% uptime.
 
 ### 💳 2. Payment & Fulfillment Infrastructure
@@ -112,7 +112,7 @@ Ecommerce-website/
 │   │   ├── components/         # Reusable UI Blocks
 │   │   │   ├── admin/          # RBAC Protected Admin Views
 │   │   │   ├── cart/           # Cart Drawer & Coupon Logic
-│   │   │   ├── chat/           # Claude AI Floating Widget
+│   │   │   ├── chat/           # Groq AI Floating Widget
 │   │   │   ├── common/         # Buttons, Modals, Loaders
 │   │   │   └── product/        # Grids, Galleries, Reviews
 │   │   ├── hooks/              # Custom Hooks (useAuth, useInfiniteScroll)
@@ -153,7 +153,7 @@ Ecommerce-website/
 *   `GET /:id/invoice` - Stream generated PDF invoice buffer.
 
 ### Artificial Intelligence (`/api/ai`)
-*   `POST /chat` - Interfaces with Claude 3 API for intent parsing.
+*   `POST /chat` - Interfaces with Groq API for intent parsing.
 
 *(Extensive routes also exist for `/reviews`, `/wishlist`, and `/coupons`)*
 
@@ -226,7 +226,7 @@ Create a `.env` file inside the `server/` directory and map these keys:
 | `SMTP_PORT` | Email TLS port (typically `587`). |
 | `SMTP_USER` | Email account username. |
 | `SMTP_PASS` | Email account App Password. |
-| `ANTHROPIC_API_KEY` | Claude 3 API Key (`sk-ant-api03-...`). |
+| `GROQ_API_KEY` | Groq API Key (`gsk_...`). |
 
 ---
 

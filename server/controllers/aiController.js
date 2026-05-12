@@ -1,11 +1,11 @@
-import Anthropic from '@anthropic-ai/sdk';
+import Groq from 'groq-sdk';
 import Product from '../models/Product.js';
 import { AppError, asyncHandler } from '../middleware/errorHandler.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const anthropic = process.env.ANTHROPIC_API_KEY ? new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
+const groq = process.env.GROQ_API_KEY ? new Groq({
+  apiKey: process.env.GROQ_API_KEY,
 }) : null;
 
 /**
@@ -51,8 +51,8 @@ export const chatWithAI = asyncHandler(async (req, res) => {
   Respond in a friendly, conversational tone. If they just say "hello", greet them and ask how you can help. Do not output <search_params> unless they are explicitly looking for a product.`;
 
   // Fallback if no API key is provided in development
-  if (!anthropic) {
-    console.warn('ANTHROPIC_API_KEY is not set. Using mock AI response.');
+  if (!groq) {
+    console.warn('GROQ_API_KEY is not set. Using mock AI response.');
     
     // Simple mock keyword extraction
     const lowercaseMsg = message.toLowerCase();
@@ -75,18 +75,21 @@ export const chatWithAI = asyncHandler(async (req, res) => {
     });
   }
 
-  // Construct message array for Anthropic
-  const messages = history ? [...history, { role: 'user', content: message }] : [{ role: 'user', content: message }];
+  // Construct message array for Groq
+  const messages = [
+    { role: 'system', content: systemPrompt },
+    ...(history || []),
+    { role: 'user', content: message }
+  ];
 
   try {
-    const aiResponse = await anthropic.messages.create({
-      model: 'claude-3-haiku-20240307',
+    const aiResponse = await groq.chat.completions.create({
+      model: 'llama3-70b-8192',
       max_tokens: 500,
-      system: systemPrompt,
       messages: messages,
     });
 
-    const aiText = aiResponse.content[0].text;
+    const aiText = aiResponse.choices[0].message.content;
     
     let products = [];
     let cleanReply = aiText;
